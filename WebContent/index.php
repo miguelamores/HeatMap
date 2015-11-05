@@ -1,1 +1,1 @@
-<?php include_once("HeatMap.html"); ?>
+<?php include_once("home.html"); ?>
