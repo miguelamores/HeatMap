@@ -1,0 +1,16 @@
+<div ng-show="request.status=='OUTBOX'" class="text-info">
+	<span class="glyphicon glyphicon-inbox"></span> {{request.status |
+	translate}}
+</div>
+<div ng-show="request.status=='INTRANSIT'" class="text-warning">
+	<span class="glyphicon glyphicon-transfer"></span> {{request.status |
+	translate}}
+</div>
+<div ng-show="request.status=='DELIVERED'" class="text-success">
+	<span class="glyphicon glyphicon-ok"></span> {{request.status |
+	translate}}
+</div>
+<div ng-show="request.status=='REJECTED'" class="text-danger">
+	<span class="glyphicon glyphicon-remove"></span> {{request.status |
+	translate}}
+</div>

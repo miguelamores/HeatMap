@@ -1,0 +1,134 @@
+body {
+	background-color: #818182;	
+}
+
+.tray {
+}
+
+.header {
+	margin-top: 5px;
+	min-height: 100px;
+	vertical-align: middle;
+}
+
+.selectOptions {
+	width: 100%;
+	font-size: 20px;
+}
+
+.workarea {
+	border-radius: 5px;
+	min-height: 600px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	background-color: #e6e6e6;
+}
+
+.footer {
+	min-height: 20px;
+	vertical-align: middle;
+	padding: 10px;
+	background-color: #dd4728;
+	border-radius: 5px;
+	font-size: 12px;
+}
+
+._logo {
+/* 	background-image: url("../img/campana.png"); */
+	min-height: 100px;
+	border-radius: 5px;	
+	margin-left: -1%;
+	margin-right: 100%;
+	max-width:100% !important;
+/*     height:auto; */
+    display:block;
+	
+}
+
+._credentials {
+	background-color: #93A73C;
+	color: white;
+	border-radius: 5px;
+	min-height: 100px;
+	vertical-align: middle;
+	padding-top: 15px;
+}
+
+.btn-primary {
+	background-color: #0F6039;
+	border-color: #0F6039;
+}
+
+.btn-primary:HOVER {
+	background-color: #094B2C;
+	border-color: #094B2C;
+}
+
+
+.btn-warning {
+	background-color: #E38F26;
+	border-color: #E38F26;
+}
+
+.btn-success {
+	background-color: #94AB3F;
+	border-color: #94AB3F;
+}
+
+.btn-info {
+	background-color: #42A4D6;
+	border-color: #42A4D6;
+}
+
+.btn-info:HOVER {
+	background-color: #1A9ADB;
+	border-color: #1A9ADB;
+}
+
+
+body {
+	background-color: #C8C8C8;
+}
+
+.nav-tabs-courier a {
+	/*color: #555555;*/
+	font-size: 1.5em;
+}
+
+
+.badge {
+	font-size: 0.9em;
+}
+	
+.element1 {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.element2 {
+	display: inline-block;
+}
+	
+
+
+.panel-default > .panel-heading .badgeUrgent {
+	background-color: #CC3426;
+}
+
+
+span.glyphicon-warning-sign {
+    font-size: 1.2em;
+}
+
+span.glyphicon-alert {
+    font-size: 1.2em;
+}
+
+
+.request-row {
+	font-size: 1.2em;
+}
+
+.request-header {
+	font-size: 1.3em;
+}

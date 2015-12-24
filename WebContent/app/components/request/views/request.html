@@ -1,0 +1,50 @@
+
+<div class="container" style="position: relative;">
+
+	<div class="row">
+
+		<div id="welcome-language-banner" class="col-sm-8 col-sm-offset-2">
+			<!-- <div class="pull-left" translate="WELCOME"
+				translate-values="{user:fullName}"></div> -->
+			<div class="pull-left"
+				ng-click="setLanguage(); changeLanguage(varIdioma.codigoIdioma)">
+				<a><span class="glyphicon glyphicon-globe"></span> {{idioma}}</a>
+			</div>
+			<div class="pull-right"
+				ng-click="logout()">
+				<a><span class="glyphicon glyphicon-log-out"></span> {{'LOGOUT' | translate}}</a>
+			</div>
+			<div>
+				<img src="assets/img/campana.png" class="img-responsive"></img>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="col-sm-6 col-sm-offset-3">
+
+		<nav class="navbar" role="navigation">
+			<ul class="nav nav-tabs">
+				<li ui-sref="request.recent.search"
+					ng-class="{active: state.includes('request.recent')}">
+					<a><span class="glyphicon glyphicon-search"></span> {{'SEARCH' | translate}}</a></li>
+				<li ng-click="goMap()"><a><span class="glyphicon glyphicon-circle-arrow-right"></span> {{'MAP' | translate}}</a></li>
+				<!-- <li ui-sref="request.form.request"
+					ng-class="{active: state.includes('request.form')}">
+					<a ng-hide="isReception"><span class="glyphicon glyphicon-pencil"></span> {{'TABNEWREQUESTEMPLOYEE' | translate}}</a></li>
+				<li ui-sref="request.reception.request"
+					ng-class="{active: state.includes('request.reception')}">
+					<a ng-hide="!isReception">
+						<span class="glyphicon glyphicon-pencil"></span> {{'TABNEWREQUESTRECEPTION' | translate}}</a></li> -->
+			</ul>
+		</nav>
+	</div>
+</div>
+
+<div class="container" style="position: relative;">
+	<div ui-view></div>
+</div>

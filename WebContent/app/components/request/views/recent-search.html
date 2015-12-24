@@ -1,0 +1,256 @@
+
+<div class="formcontainer" id="form-container" ng-show="root==true">
+
+	<div id="signup-form" class="marginSearch">
+
+		<div class="form-group">
+		
+		
+		<div data-pagination="" data-num-pages="numPages()" 
+		  data-current-page="currentPage" data-max-size="5"  
+		  data-boundary-links="true"></div>
+
+		
+		<div class="row">
+				<div class="col-md-3">
+				<label translate="MINDATE"></label>
+					<p class="input-group">
+			              <input type="text" class="form-control" datepicker-popup="MM/dd/yyyy" 
+			              		ng-model="dtMin" is-open="openedMin" max-date="dtMax"		              		            		
+			              		ng-required="true" close-text="Close" />
+			              <span class="input-group-btn">
+			                <button type="button" class="btn btn-default" ng-click="openMin($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+			              </span>
+			       	</p>
+			       	
+		       	</div>
+		       	
+		       	
+		       	<div class="col-md-3"></div>
+		       	
+		       	<div class="col-md-3">
+		       	<label translate="MAXDATE"></label>
+					<p class="input-group">
+			              <input type="text" class="form-control" datepicker-popup="MM/dd/yyyy" 
+			              		ng-model="dtMax" is-open="openedMax" min-date="dtMin"	              		 
+			              		ng-required="true" close-text="Close" />
+			              <span class="input-group-btn">
+			                <button type="button" class="btn btn-default" ng-click="openMax($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+			              </span>
+			       	</p>	       	
+		       	</div>
+		       	
+		</div>
+
+		
+
+<!-- 			FROM -->
+		
+			<!-- <div>
+				<label translate="SENDER"></label>
+				<div angucomplete-alt id="members"
+					placeholder="{{'SEARCHEMPLOYEE' | translate}}"
+					pause="300"
+					selected-object="getFrom"
+					input-changed="clearFrom"
+					remote-url="restapi/employees/byname/?name="
+					title-field="name,department" auto-match="true"
+					minlength="4"
+					input-class="form-control form-control-small"></div>
+			</div> -->
+		
+
+
+		</div>
+
+
+		<div class="form-group row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<a class="btn btn-block btn-primary" ng-click="requestsSearchFunction(1)">{{'SEARCH' | translate}} <span
+					class="glyphicon glyphicon-search"></span>
+				</a>			
+				
+			</div>
+		</div>
+
+		<!-- <div ng-show="requestsSearch.totalResults > 10">
+			<pagination total-items="requestsSearch.totalResults" 
+				ng-model="requestsSearch.currentPage" 			
+				items-per-page="requestsSearch.pageSize" 
+				ng-change="requestsSearchFunction(requestsSearch.currentPage)"				
+				previous-text="<"
+				next-text=">"
+				boundary-links=true
+				first-text="<<"
+				last-text=">>">
+			</pagination>			
+		</div>	 -->	
+
+		<table class="table table-striped"
+			style="color: black; margin-top: 5px; background-color: #f2f2f2;">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>dB(A)</th>
+					<th>{{'LATITUDE' | translate}}</th>
+					<th>{{'LONGITUDE' | translate}}</th>
+					<th>{{'CREATED' | translate}}</th>
+					<!-- <th>User</th> -->
+				</tr>
+			</thead>
+			<tbody>
+			<!-- <tr	ng-repeat="request in requestsSearch.list | orderBy:'-creationDate'"> -->
+				<tr	ng-repeat="request in requestsSearch">
+					<th scope="row" ng-model="request.id">
+
+						<a class="modalClass" data-toggle="modal" data-target="#myModal{{request.id}}">{{request.id}}</a>
+
+
+						<!-- MODAL -->
+						<div class="modal fade" id="myModal{{request.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+					        	<h3 class="modal-title modalClass" id="myModalLabel">hola
+					        			{{'REQUEST' | translate}} {{request.latitude}}
+					         	</h3>
+							  	<div request-status></div>
+							  </div>
+						      <div class="modal-body modalClass">
+										<div>
+											<label class="element1">{{'FROM' | translate}}:</label>
+											<h5 class="modalClass element2">{{request.senderName}} ({{request.senderDepartment.name}})</h5>
+										</div>
+						      	<div>
+							      	<label class="element1">{{'TO' | translate}}:</label>
+							      	<h5 class="modalClass element2" ng-hide="request.recipientName==request.recipientDepartment.name">{{request.recipientName}} ({{request.recipientDepartment.name}})</h5>
+							      	<h5 class="modalClass element2" ng-show="request.recipientName==request.recipientDepartment.name">{{request.recipientName}}</h5>
+						      	</div>
+								<div ng-if="request.noticeUsername">
+							      	<label class="element1">{{'NOTIFICATION' | translate}}:</label>
+							      	<h5 class="modalClass element2">{{request.noticeName}}</h5>
+						      	</div>
+						      	<div>
+							      	<label class="element1">{{'CREATIONDATE' | translate}}:</label>
+							      	<h5 class="modalClass element2">{{request.creationDate | date: dateFormat}}</h5>
+						      	</div>
+						      	<div>
+							      	<label class="element1">{{'ITEMTYPE' | translate}}:</label>
+							      	<h5 class="modalClass element2">{{request.itemType | translate}}</h5>
+						      	</div>
+						      	<div>
+							      	<label class="element1">{{'PRIORITY' | translate}}:</label>
+							      	<h5 class="modalClass element2">{{request.priority | translate}}</h5>
+						      	</div>
+						      	<div ng-if="request.priority == 'URGENT'">
+							      	<label class="element1">{{'PRIORITYJUST' | translate}}:</label>
+							      	<h5 class="modalClass element2">{{request.priorityJustification}}</h5>
+						      	</div>
+								<div>
+							      	<label class="element1">{{'COMMENT' | translate}}:</label>
+							      	<h5 class="modalClass element2">{{request.requestComment}}</h5>
+						      	</div>
+
+
+
+						      	<!-- PICKUP -->
+						      	<div>
+						      		<hr/>
+									<div>
+										<label class="element1">{{'PICKUPDATE' | translate}}:</label>
+							      		<h5 class="modalClass element2">{{request.pickUpDate | date: dateFormat}}</h5>
+									</div>
+						      		<div>
+							      		<label class="element1">{{'COURIER' | translate}}:</label>
+							      		<h5 class="modalClass element2">{{request.courierName}}</h5>
+						      		</div>
+						      	</div>
+
+
+						      	<!-- DELIVERY -->
+						      	<div>
+						      		<hr/>
+									<div>
+										<label class="element1">{{'DELIVERYDATE' | translate}}:</label>
+							      		<h5 class="modalClass element2">{{request.deliveryDate | date: dateFormat}}</h5>
+									</div>
+						      		<div>
+							      		<label class="element1">{{'COMMENT' | translate}}:</label>
+							      		<h5 class="modalClass element2">{{request.courierComment}}</h5>
+						      		</div>
+							    </div>
+
+							    <!-- REJECT -->
+								<div>
+									<hr/>
+									<div>
+										<label class="element1">{{'REJECTDATE' | translate}}:</label>
+							      		<h5 class="modalClass element2">{{request.pickUpDate | date: dateFormat}}</h5>
+									</div>
+									<div>
+							      		<label class="element1">{{'COURIER' | translate}}:</label>
+							      		<h5 class="modalClass element2">{{request.courierName}}</h5>
+						      		</div>
+						      		<div>
+							      		<label class="element1">{{'COMMENT' | translate}}:</label>
+							      		<h5 class="modalClass element2">{{request.courierComment}}</h5>
+						      		</div>
+							     </div>
+
+						      </div>
+
+
+
+
+
+						      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							        
+							        
+										<button type="button" class="btn btn-info pull-left"
+												ng-if="request.status != 'OUTBOX' && role=='ALL'" data-dismiss="modal"
+												ng-click="recallRequest(request.id)">{{'RECALL' | translate}}</button>
+									
+							        
+							  </div>
+							  
+							   
+							  
+						    </div>
+						  </div>
+						</div>
+
+
+					</th>
+
+					<td>{{request.value | number:2}}</td>
+					<td>{{request.latitude}}</td>
+					<td>{{request.longitude}}</td>
+					<td>{{request.created_at | date:'medium'}}</td>
+					<!-- <td>
+						<span am-time-ago="request.creationDate"></span>
+					</td>
+					<td>
+						<a class="modalClass" data-toggle="modal" data-target="#myModal{{request.id}}">
+							<div request-status></div>
+						</a>
+					</td> -->
+
+				</tr>
+			</tbody>
+		</table>
+		
+		
+		
+		
+
+	</div>
+
+</div>
+<div class="alert alert-danger" role="alert" ng-show="root==false">
+	<span class="glyphicon glyphicon-exclamation-sign"></span>
+	Debe iniciar sesion. 
+	<strong ng-click="regresar()" style="cursor: pointer;">Regresar al inicio</strong>
+</div>
