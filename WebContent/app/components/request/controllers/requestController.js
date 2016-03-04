@@ -63,12 +63,14 @@ app.controller('requestController', [
     };    
     
     $scope.logout = function(){
-    	$rootScope.user = false;
+    	$rootScope.user = 0;
+    	localStorage.removeItem("user");
+    	//location.reload(true);
 		$state.go('login');
 	}
     
     $scope.goMap = function(){
-    	if($rootScope.user !== undefined){
+    	if($rootScope.user == 1){
     		document.location.href = "mapa.html";
     	}
     		

@@ -12,8 +12,8 @@ angular.module('requestApp')
 				'$rootScope',
 				'$state',
 				function($scope, $timeout, $translate, requestFactory, $rootScope, $state) {		
-
-					$rootScope.user = false;
+					localStorage.removeItem("user");
+					$rootScope.user = 0;
 					console.log($rootScope.user);
 					
 					
@@ -42,22 +42,18 @@ angular.module('requestApp')
 							
 							$timeout(function(){
 								if($scope.requestsSearch.name !== undefined){
-									$rootScope.user = true;
-								}
-								//$rootScope.user = $scope.requestsSearch.name;							
+									$rootScope.user = 1;
+								}						
 								console.log($scope.requestsSearch.name);
-								
-								
-								if($rootScope.user == false){
-									console.log("error");
+															
+								if($rootScope.user == 0){
+									alert("Error. Intente de nuevo!");
 								} else{
-									$state.go('request.recent.search');
-									
+									$state.go('request.recent.search');								
 								}
 								
-								
-								
-							}, 1500);
+										
+							}, 4000);
 							
 							
 						}

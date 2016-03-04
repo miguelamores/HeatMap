@@ -15,7 +15,7 @@ angular
 									'request',
 									{
 										url : '/request',
-										templateUrl : 'app/components/request/views/request.html',
+										templateUrl : 'app/components/request/views/request.html?nocache='+ (new Date()).getTime(),
 										controller : 'requestController'
 									})
 							// Recent
@@ -23,20 +23,20 @@ angular
 									'request.recent',
 									{
 										url : '/recent',
-										templateUrl : 'app/components/request/views/recent.html'
+										templateUrl : 'app/components/request/views/recent.html?nocache='+ (new Date()).getTime()
 									})
 							.state(
 									'request.recent.search',
 									{
 										url : '/search',
-										templateUrl : 'app/components/request/views/recent-search.html',
+										templateUrl : 'app/components/request/views/recent-search.html?nocache='+ (new Date()).getTime(),
 										controller : 'searchController'							
 									})
 							.state(
 									'login',
 									{
 										url : '/login',
-										templateUrl : 'app/components/request/views/login.html',
+										templateUrl : 'app/components/request/views/login.html?nocache='+ (new Date()).getTime(),
 										controller : 'loginController'
 									})
 							.state(

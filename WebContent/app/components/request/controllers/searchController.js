@@ -17,21 +17,22 @@ angular.module('requestApp')
 				'$rootScope',
 				function($scope, $state, requestFactory, $timeout, $filter, $translate, $http, $rootScope) {		
 
+					
 					$scope.root = $rootScope.user;
 					console.log($rootScope.user);
 					//var userVar = $rootScope.user;
 					//localStorage.removeItem("user");
-					if($scope.root == true || $scope.root === undefined){
-						localStorage.setItem("user", true);
+					if($scope.root == 1 || $scope.root === undefined){
+						localStorage.setItem("user", 1);
 						console.log(localStorage.getItem("user"));
 						
 					} else{
-						localStorage.setItem("user", false);
+						localStorage.setItem("user", 0);
 						console.log(localStorage.getItem("user"));
 						
 					}
-					var a = localStorage.getItem("user");
-					$scope.root = Boolean(a);
+					
+					$scope.root = localStorage.getItem("user");
 					console.log($scope.root);
 					
 					$scope.openMin = function($event) {
@@ -69,9 +70,7 @@ angular.module('requestApp')
 //					
 
 					
-					$scope.requestsSearchFunction = function(pag){ 
-						console.log(pag);
-//						$scope.page = pag;
+					$scope.requestsSearchFunction = function(){ 
 						var incMax = new Date($scope.dtMax);
 						incMax.setDate($scope.dtMax.getDate() + 1);						
 						var incMin = new Date($scope.dtMin);
